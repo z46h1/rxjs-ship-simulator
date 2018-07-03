@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RxJs Demo</title>
+  <style>
+    body, h1 {
+      padding: 0;
+      margin: 0;
+    }
+    .flex-center {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    #playground {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      width: 100%;
+      height: 100vh;
+    }
+    #game-view {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 100vh;
+    }
+    #control-panel {
+      border-left: 5px solid black;
+      grid-column-start: 2;
+      grid-column-end: 3;
+      display: grid;
+      height: 100vh;
+    }
+    #gps {
+      grid-row-start: 1;
+      grid-row-end: 2;
+    }
+    #lat, #long {
+      border: 3px solid black;
+      width: 30%;
+      height: 50px;
+    }
+    #speed, #heading, #port-rudder, #starboard-rudder, #wind-speed, #wind-direction {
+      border: 3px solid black;
+      width: 150px;
+      height: 50px;
+    }
+    #weather {
+      grid-row-start: 2;
+      grid-row-end: 3;
+    }
+    #speed-course {
+      grid-row-start: 3;
+      grid-row-end: 4;
+    }
+    #rudder {
+      grid-row-start: 4;
+      grid-row-end: 5;
+    }
+    #buttons {
+      grid-row-start: 5;
+      grid-row-end: 6;
+    }
+    .buttons {
+      flex-direction: column;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+<div id="playground">
+  <div id="game-view">
+    <div id="ship-game">
+    </div>
+  </div>
+  <div id="control-panel">
+    <div id="gps" class="flex-center">
+      <span>LAT:</span>
+      <div id="lat">
+        <h1 id="lat-text">0</h1>
+      </div>
+      <span>LONG:</span>
+      <div id="long">
+        <h1 id="long-text">0</h1>
+      </div>
+    </div>
+    <div id="weather" class="flex-center">
+      <span>Wind speed:</span>
+      <div id="wind-speed" class="flex-center">
+        <h1 id="wind-speed-text">0</h1>
+      </div>
+      <span>Wind direction:</span>
+      <div id="wind-direction" class="flex-center">
+        <h1 id="wind-direction-text">0</h1>
+      </div>
+      <div><button id="weather-button">Get Weather</button></div>
+    </div>
+    <div id="rudder" class="flex-center">
+      <span>PORT rudder:</span>
+      <div id="port-rudder" class="flex-center">
+        <h1 id="port-rudder-text">0</h1>
+      </div>
+      <span>STARBOARD rudder:</span>
+      <div id="starboard-rudder" class="flex-center">
+        <h1 id="starboard-rudder-text">0</h1>
+      </div>
+    </div>
+    <div id="speed-course" class="flex-center">
+      <span>SPEED:</span>
+      <div id="speed" class="flex-center">
+        <h1 id="speed-text">0</h1>
+      </div>
+      <span>HEADING:</span>
+      <div id="heading" class="flex-center">
+        <h1 id="heading-text">0</h1>
+      </div>
+    </div>
+    <div id="buttons" class="flex-center">
+      <div class="buttons flex-center">
+        <button id="port-button">PORT</button></div>
+      <div class="buttons flex-center">
+        <button id="full-button">FULL AHEAD</button>
+        <button id="half-button">HALF AHEAD</button>
+        <button id="slow-button">SLOW AHEAD</button>
+        <button id="deadslow-button">DEAD SLOW AHEAD</button>
+        <button id="stop-button">STOP</button>
+      </div>
+      <div class="buttons flex-center">
+        <button id="starboard-button">STARBOARD</button></div>
+    </div>
+  </div>
+</div>
+<script src="main.js" charset="utf-8"></script>
+</body>
+</html>
