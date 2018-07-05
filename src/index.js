@@ -10,10 +10,12 @@ let shipPositionX = (width / 2) - shipWidth;
 let shipPositionY = height - shipWidth;
 let draw = SVG('ship-game').size(width, height);
 let ship = null;
+let shipImage = null;
 draw.viewbox(0, 0, width, height);
 draw.rect(width, height).fill('#1ca3ec');
-ship = draw.image('statek.png');
-ship.size(shipHeight, shipWidth).move(shipPositionX, shipPositionY);
+ship = draw.nested();
+shipImage = ship.image('statek.png').move(shipPositionX, shipPositionY);
+shipImage.size(shipHeight, shipWidth);
 
 // BUTTONS
 const stopButton = document.getElementById('stop-button');
@@ -27,16 +29,16 @@ const getWeatherButton = document.getElementById('weather-button');
 
 // INDICATORS
 const speedIndicator = document.getElementById('speed-text');
-const portrudderIndicator = document.getElementById('port-rudder-text');
-const starboardrudderIndicator = document.getElementById('starboard-rudder-text');
+const portRudderIndicator = document.getElementById('port-rudder-text');
+const starboardRudderIndicator = document.getElementById('starboard-rudder-text');
 const latIndicator = document.getElementById('lat-text');
 const longIndicator = document.getElementById('long-text');
 const headingIndicator = document.getElementById('heading-text');
 const windSpeedIndicator = document.getElementById('wind-speed-text');
 const windDirectionIndicator = document.getElementById('wind-direction-text');
 
-// y = y0 - Math.cos(angle * Math.PI / 180) * distance);
-// x = x0 - Math.sin(angle * Math.PI / 180) * distance);
+// y = y0 + Math.cos(angle * Math.PI / 180) * distance);
+// x = x0 + Math.sin(angle * Math.PI / 180) * distance);
 
 const getWeather = () => fetch('weather.json').then(res => res.json()).catch(err => console.error(err));
 
